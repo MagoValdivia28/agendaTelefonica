@@ -1,19 +1,97 @@
-.hidden{
-    display: none;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-#img1{
-    width: 30%;
-
+.container-records-registration{
+    background-color: #f1f0f0;
+    margin: 0.5rem 10rem;
+    border: 1px solid #ccc;
+    width: 50%;
 }
-.list-eachctt{
+
+.title-principal {
+    background-color: #089445;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 30px;
+    color:white;
+}
+
+.container-inputs{
     display: flex;
     flex-direction: column;
+    padding: 0.5rem;
+    border-radius: 8px;
 }
 
-.sucesso{
-    color: green;
+.inputs {
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    padding: 0.2rem;
+    margin: 0.2rem;
 }
-.error{
-    color: red;
+
+.buttons {
+    background-color: #5050b4;
+    border: none;
+    margin: 0 2rem 0.2rem 2.6rem;
+    padding: 0.2rem;
+    border-radius: 8px;
+    color: #f1f0f0;
+}
+
+.principal-main {
+    display: flex;
+}
+
+#contactListComplet {
+    width: 30%;
+    text-align: center;
+   overflow-y: hidden ;
+}
+
+.logos {
+    width: 10%;
+}
+
+.container-registers {
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.imagesimple {
+    width: 15%;
+    border-radius: 100%;
+}
+
+.simple-list-contacts {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 3rem;
+}
+
+.texts {
+    margin: 0 1rem;
+}
+
+.complectimage {
+    width: 50%;
+    border-radius: 100%;
+    margin: 0.5rem;
+}
+
+.list-contacts {
+    margin: 1rem;
+    background-color: #c6c6c6;
+    line-height: 23px;
+}
+
+.hidden {
+    display: none !important;
 }

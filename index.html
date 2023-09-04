@@ -8,8 +8,11 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <article>
-        <div>
+    <h1 class="title-principal">Agenda Telefônica</h1>
+    <main class="principal-main">
+        <main class="container-records-registration">
+            <article class="container-inputs">
+        
             <input type="text" id="name" placeholder="nome">
             <input type="number" id="tell" placeholder="telefone">
             <input type="number" id="cell" placeholder="celular">
@@ -20,13 +23,17 @@
             <input type="text" id="city" placeholder="Cidade">
             <input type="text" id="insta" placeholder="@Instagram">
             <input type="text" id="github" placeholder="@GitHub">
-          
-            <button onclick="comporContato()">adicionar contato</button>
-        </div>
-    </article>
+        </article>
+        
         <p id="msg" class=""></p>
-    <article>
-        <div id="list"></div>
-    </article>
+        <button onclick="comporContato()">adicionar contato</button>
+        
+        <article class="container-registers">
+            <section id="contactList"></section>
+        </article>
+    </main>
+    <section id="contactListComplet"></section>
+
+</main>
 </body>
 </html>
