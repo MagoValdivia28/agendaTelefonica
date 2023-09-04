@@ -64,3 +64,15 @@ getPersonAge() {
     }
 }
 }
+
+class contatoList{
+    constructor(){
+        this.list = [];
+    }
+
+    addontat(param){
+        this.list.push(param);
+    }
+}
+const newContatoList = new contatoList();
+
