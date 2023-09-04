@@ -1,4 +1,4 @@
-class contato {
+class Contato {
     constructor(name, tell, cell, imagem, data, email, cep, city, insta, github) {
         this.name = name;
         this.tell = tell;
@@ -87,19 +87,6 @@ function sendErrorMsg(msg) {
     }, 4000);
 }
 
-function addNewContatoList() {
-    let name = document.getElementById("name").value;
-    let tell = document.getElementById("tell").value;
-    let cell = document.getElementById("cell").value;
-    let imagem = document.getElementById("imagem").value;
-    let data = document.getElementById("data").value;
-    let email = document.getElementById("email").value;
-    let cep = document.getElementById("cep").value;
-    let city = document.getElementById("city").value;
-    let insta = document.getElementById("insta").value;
-    let github = document.getElementById("github").value;
-}
-
 function isAnyImputAmpty() {
     const name = document.getElementById("name").value
     const email = document.getElementById("email").value
@@ -113,4 +100,38 @@ function isAnyImputAmpty() {
     } else {
         return false;
     }
+}
+
+function clearField() {
+    document.getElementById("name").value = ""
+    document.getElementById("tell").value = ""
+    document.getElementById("cell").value = ""
+    document.getElementById("imagem").value = ""
+    document.getElementById("data").value = ""
+    document.getElementById("email").value = ""
+    document.getElementById("cep").value = ""
+    document.getElementById("city").value = ""
+    document.getElementById("insta").value = ""
+    document.getElementById("github").value = ""
+
+}
+
+function addNewContatoList() {
+    let name = document.getElementById("name").value;
+    let tell = document.getElementById("tell").value;
+    let cell = document.getElementById("cell").value;
+    let imagem = document.getElementById("imagem").value;
+    let data = document.getElementById("data").value;
+    let email = document.getElementById("email").value;
+    let cep = document.getElementById("cep").value;
+    let city = document.getElementById("city").value;
+    let insta = document.getElementById("insta").value;
+    let github = document.getElementById("github").value;
+
+    const contato = new Contato(name, tell, cell, imagem, data, email, cep, city, insta, github);
+
+    isAnyImputAmpty();
+    sendErrorMsg(msg)
+    newContatoList.addContato(contato)
+    clearField()
 }
