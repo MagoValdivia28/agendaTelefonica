@@ -11,8 +11,8 @@
     <article>
         <div>
             <input type="text" id="name" placeholder="nome">
-            <input type="text" id="tell" placeholder="telefone">
-            <input type="text" id="cell" placeholder="celular">
+            <input type="number" id="tell" placeholder="telefone">
+            <input type="number" id="cell" placeholder="celular">
             <input type="text" id="imagem" placeholder="URL da Foto">
             <input type="date" id="data">
             <input type="text" id="email" placeholder=" E-mail">
@@ -21,9 +21,12 @@
             <input type="text" id="insta" placeholder="@Instagram">
             <input type="text" id="github" placeholder="@GitHub">
           
-            <button onclick="addNewContatoList()">adicionar contato</button>
+            <button onclick="comporContato()">adicionar contato</button>
         </div>
     </article>
-        <div id="error-msg"></div>
+        <p id="msg" class=""></p>
+    <article>
+        <div id="list"></div>
+    </article>
 </body>
 </html>

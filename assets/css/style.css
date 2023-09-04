@@ -1,0 +1,19 @@
+.hidden{
+    display: none;
+}
+
+#img1{
+    width: 30%;
+
+}
+.list-eachctt{
+    display: flex;
+    flex-direction: column;
+}
+
+.sucesso{
+    color: green;
+}
+.error{
+    color: red;
+}

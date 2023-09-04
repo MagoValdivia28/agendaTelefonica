@@ -69,22 +69,36 @@ class contatoList {
         this.list = [];
     }
     addContato(param) {
-        if (!isAnyImputAmpty()) {
-            sendErrorMsg("Preecha todos os campos")
+        if (isAnyImputAmpty() == true) {
+            envieMsg("Preecha todos os campos", "erro")
+        } else if (!isURLValida(param.imagem)) {
+            envieMsg("URL invalida", "erro")
+        }
+        else {
+            envieMsg("cliente cadastrado com sucesso", "sucesso")
             this.list.push(param);
         }
     }
 }
-const newContatoList = new contatoList();
-
-function sendErrorMsg(msg) {
-    console.log("Passou pela funcao sendErrorMsg()");
-    document.getElementById("error-msg").innerHTML = msg;
-    document.getElementById("error-msg").classList.remove("hidden");
-    setTimeout(function () {
-        document.getElementById("error-msg").classList.add("hidden");
-    }, 4000);
+function isURLValida(imagem) {
+    if (imagem.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
+function envieMsg(msg, tipoMsg) {
+    let msgDiv = document.getElementById('msg');
+    let msgEnviar = `
+    <p class = "${tipoMsg}">${msg}</p>`;
+    msgDiv.innerHTML = msgEnviar;
+
+    setTimeout(function () {
+        msgDiv.innerHTML = ''
+    }, 4000)
+}
+
 function isAnyImputAmpty() {
 
     const name = document.getElementById("name").value;
@@ -98,21 +112,16 @@ function isAnyImputAmpty() {
     const insta = document.getElementById("insta").value;
     const github = document.getElementById("github").value;
 
-    if (name == "" || tell == "" || cell == "" || imagem == "" || data == "" || email == "" || cep == "" || city == "" || insta == "" || github) {
+    if (name == "" || tell == "" || cell == "" || imagem == "" || data == "" || email == "" || cep == "" || city == "" || insta == "" || github == "") {
         return true;
-    } else if (!isURLValida(imgLink)) {
-        sendErrorMsg("URL da imagem inválida!");
-    }else {
-        return false;
-    }
-}
-function isURLValida(url) {
-    if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-        return true;
+        ;
     } else {
+
         return false;
     }
 }
+
+
 
 function clearField() {
     document.getElementById("name").value = ""
@@ -127,7 +136,9 @@ function clearField() {
     document.getElementById("github").value = ""
 
 }
-function addNewContatoList() {
+const newContatoList = new contatoList();
+
+function comporContato() {
     let name = document.getElementById("name").value;
     let tell = document.getElementById("tell").value;
     let cell = document.getElementById("cell").value;
@@ -139,38 +150,65 @@ function addNewContatoList() {
     let insta = document.getElementById("insta").value;
     let github = document.getElementById("github").value;
 
-    const contato = new Contato(name, tell, cell, imagem, data, email, cep, city, insta, github);
+    const contacts = new Contato(name, tell, cell, imagem, data, email, cep, city, insta, github);
 
     isAnyImputAmpty();
-    sendErrorMsg(msg)
-    newContatoList.addContato(contato)
+    envieMsg()
+    newContatoList.addContato(contacts)
     clearField()
+    showAllContacts();
+
 }
 let msg = ""
 
-console.log(newContatoList);
+console.log(newContatoList.list);
 
-function wpp(cell) {
-    let link = "https://api.whatsapp.com/send?phone=55" + cell;
-    return link;
-}
 
 function showAllContacts() {
     let showingctts = '';
-    newContatoList.contato.forEach((contato) => {
-        showingUsers += `
-        <div class="list-eachUser">
-            <img src="${contato.im}" alt=""
+    newContatoList.list.forEach(contato => {
+        showingctts += `
+        <div class="list-eachctt" onclick="comporTudo">
+            <img id="img1"src="${contato.imagem}">
             <p><b>nome:</b>${contato.name}</p>
             <p><b>telefone:</b>${contato.tell}</p>
             <p><b>celular:</b>${contato.cell}</p>
-            <p><b>idade:</b>${contato.age}</p>
-            <p><b>signo:</b>${contato.zodiac}</p>
-            <p><b>cidade:</b>${contato.address}</p>
-            <p><b>celular:</b>${contato.telephone}</p>
-            <p><b>cpf:</b>${contato.cpf}</p>
         </div>
         `
     })
-    document.getElementById("user-list").innerHTML = showingctts;
+    document.getElementById("list").innerHTML = showingctts;
+}   
+function dateinPTBR(data) {
+    console.log("Passou pela funcao dateinPTBR()");
+
+    let dateArray = data.split("-");
+    let datePTBR = dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0];
+    return datePTBR;
 }
+
+function formatedCellphone(cell) {
+    console.log("Passou pela funcao formatedCellphone()");
+
+    let cellphoneArray = cell.split("");
+    let cellphoneFormated = "(" + cellphoneArray[0] + cellphoneArray[1] + ")"
+        + " " + cellphoneArray[2] + cellphoneArray[3] + cellphoneArray[4]
+        + cellphoneArray[5] + cellphoneArray[6] + "-"
+        + cellphoneArray[7] + cellphoneArray[8]
+        + cellphoneArray[9] + cellphoneArray[10];
+    return cellphoneFormated;
+}
+
+function comporTudo() {
+        let showingAll = '';
+        newContatoList.list.forEach(contato => {
+            showingctts += `
+            <div class="list-eachctt" onclick="comporTudo">
+                <img id="img1"src="${contato.imagem}">
+                <p><b>nome:</b>${contato.name}</p>
+                <p><b>telefone:</b>${contato.tell}</p>
+                <p><b>celular:</b>${contato.cell}</p>
+            </div>
+            `
+        })
+        document.getElementById("list").innerHTML = showingctts;
+    }   
