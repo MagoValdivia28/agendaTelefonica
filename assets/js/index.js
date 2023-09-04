@@ -10,10 +10,13 @@ class contato{
         this.city = city;
         this.insta = insta;
         this.github = github;
+        this.age = this.getPersonAge()
+        this.zodiac = this.getZodiacSign()
+        this.client = this.possibleClient();
     }
 
 getZodiacSign() {
-    let birthdate = new Date(this.birthdate);
+    let birthdate = new Date(this.data);
     let day = birthdate.getDate();
     let month = birthdate.getMonth() + 1;
     console.log("Passou pelo getSigno() da class User");
@@ -44,3 +47,20 @@ getZodiacSign() {
     }
 }
 
+getPersonAge() {
+    console.log("passou pela conta da idade");
+
+    const birthdaydate = this.data;
+    const birthYear = new Date(birthdaydate).getFullYear();
+    const weYear = new Date().getFullYear();
+    const birthMonth = new Date(birthdaydate).getMonth() + 1;
+    const weMonth = new Date().getMonth() + 1;
+
+    const age = weYear - birthYear;
+    if (birthMonth > weMonth) {
+        return age - 1;
+    } else {
+        return age;
+    }
+}
+}
