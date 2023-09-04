@@ -66,6 +66,9 @@ class Contato {
     generateId() {
         return Math.floor(Math.random() * 9999);
     }
+    getContactById(id) {
+        return this.list.find((contact) => contact.id == id);
+    }
 }
 
 class contatoList {
@@ -83,9 +86,6 @@ class contatoList {
             this.list.push(param);
             clearField();
         }
-    }
-    getContactById(id) {
-        return this.list.find((contact) => contact.id == id);
     }
 }
 

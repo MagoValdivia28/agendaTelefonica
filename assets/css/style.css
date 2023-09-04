@@ -1,18 +1,11 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+    
 
 .container-records-registration{
     background-color: #f1f0f0;
-    margin: 0.5rem 10rem;
+    margin: 0.5rem 2%;
     border: 1px solid #ccc;
-    width: 50%;
+    width: 35%;
 }
 
 .title-principal {
@@ -38,7 +31,7 @@
 }
 
 .buttons {
-    background-color: #5050b4;
+    background-color: #089445;
     border: none;
     margin: 0 2rem 0.2rem 2.6rem;
     padding: 0.2rem;
