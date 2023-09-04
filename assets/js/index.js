@@ -12,7 +12,6 @@ class Contato {
         this.github = github;
         this.age = this.getPersonAge()
         this.zodiac = this.getZodiacSign()
-        this.client = this.possibleClient();
     }
 
     getZodiacSign() {
@@ -70,7 +69,7 @@ class contatoList {
         this.list = [];
     }
     addContato(param) {
-        if (isAnyImputAmpty()) {
+        if (!isAnyImputAmpty()) {
             sendErrorMsg("Preecha todos os campos")
             this.list.push(param);
         }
@@ -86,16 +85,29 @@ function sendErrorMsg(msg) {
         document.getElementById("error-msg").classList.add("hidden");
     }, 4000);
 }
-
 function isAnyImputAmpty() {
-    const name = document.getElementById("name").value
-    const email = document.getElementById("email").value
-    const birthdate = document.getElementById("birthdate").value
-    const city = document.getElementById("address").value
-    const telephone = document.getElementById("phone").value
-    const cpf = document.getElementById("cpf").value
 
-    if (name == "" || email == "" || birthdate == "" || city == "" || telephone == "" || cpf == "") {
+    const name = document.getElementById("name").value;
+    const tell = document.getElementById("tell").value;
+    const cell = document.getElementById("cell").value;
+    const imagem = document.getElementById("imagem").value;
+    const data = document.getElementById("data").value;
+    const email = document.getElementById("email").value;
+    const cep = document.getElementById("cep").value;
+    const city = document.getElementById("city").value;
+    const insta = document.getElementById("insta").value;
+    const github = document.getElementById("github").value;
+
+    if (name == "" || tell == "" || cell == "" || imagem == "" || data == "" || email == "" || cep == "" || city == "" || insta == "" || github) {
+        return true;
+    } else if (!isURLValida(imgLink)) {
+        sendErrorMsg("URL da imagem inválida!");
+    }else {
+        return false;
+    }
+}
+function isURLValida(url) {
+    if (url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
         return true;
     } else {
         return false;
@@ -115,7 +127,6 @@ function clearField() {
     document.getElementById("github").value = ""
 
 }
-
 function addNewContatoList() {
     let name = document.getElementById("name").value;
     let tell = document.getElementById("tell").value;
@@ -134,4 +145,32 @@ function addNewContatoList() {
     sendErrorMsg(msg)
     newContatoList.addContato(contato)
     clearField()
+}
+let msg = ""
+
+console.log(newContatoList);
+
+function wpp(cell) {
+    let link = "https://api.whatsapp.com/send?phone=55" + cell;
+    return link;
+}
+
+function showAllContacts() {
+    let showingctts = '';
+    newContatoList.contato.forEach((contato) => {
+        showingUsers += `
+        <div class="list-eachUser">
+            <img src="${contato.im}" alt=""
+            <p><b>nome:</b>${contato.name}</p>
+            <p><b>telefone:</b>${contato.tell}</p>
+            <p><b>celular:</b>${contato.cell}</p>
+            <p><b>idade:</b>${contato.age}</p>
+            <p><b>signo:</b>${contato.zodiac}</p>
+            <p><b>cidade:</b>${contato.address}</p>
+            <p><b>celular:</b>${contato.telephone}</p>
+            <p><b>cpf:</b>${contato.cpf}</p>
+        </div>
+        `
+    })
+    document.getElementById("user-list").innerHTML = showingctts;
 }
