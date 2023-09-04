@@ -77,9 +77,20 @@ class contatoList {
         }
     }
 }
-    const newContatoList = new contatoList();
+const newContatoList = new contatoList();
 
-
+function addNewContatoList() {
+    let name = document.getElementById("name").value;
+    let tell = document.getElementById("tell").value;
+    let cell = document.getElementById("cell").value;
+    let imagem = document.getElementById("imagem").value;
+    let data = document.getElementById("data").value;
+    let email = document.getElementById("email").value;
+    let cep = document.getElementById("cep").value;
+    let city = document.getElementById("city").value;
+    let insta = document.getElementById("insta").value;
+    let github = document.getElementById("github").value;
+}
 
 function isAnyImputAmpty() {
     const name = document.getElementById("name").value
