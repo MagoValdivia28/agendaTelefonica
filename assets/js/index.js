@@ -71,13 +71,21 @@ class contatoList {
     }
     addContato(param) {
         if (isAnyImputAmpty()) {
-            sendErrorMsg("Preecha todos os campos"){
-                this.list.push(param);
-            }
+            sendErrorMsg("Preecha todos os campos")
+            this.list.push(param);
         }
     }
 }
 const newContatoList = new contatoList();
+
+function sendErrorMsg(msg) {
+    console.log("Passou pela funcao sendErrorMsg()");
+    document.getElementById("error-msg").innerHTML = msg;
+    document.getElementById("error-msg").classList.remove("hidden");
+    setTimeout(function () {
+        document.getElementById("error-msg").classList.add("hidden");
+    }, 4000);
+}
 
 function addNewContatoList() {
     let name = document.getElementById("name").value;
